@@ -1,0 +1,19 @@
+         CLIPS (6.30 3/17/15)
+CLIPS> (deftemplate animal
+   (slot name))
+CLIPS> (defrule check_animal
+   (animal (name ?nm&:(or (eq ?nm duck) (eq ?nm turtle))))
+   =>
+   (printout t "This is a " ?nm "." crlf))
+CLIPS> (run)
+CLIPS> (reset)
+CLIPS> (assert (animal (name duck)))
+<Fact-1>
+CLIPS> (assert (animal (name turtle)))
+<Fact-2>
+CLIPS> (assert(animal (name elephant)))
+<Fact-3>
+CLIPS> (run)
+This is a turtle.
+This is a duck.
+CLIPS> 
